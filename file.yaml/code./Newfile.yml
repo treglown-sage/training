@@ -1,0 +1,28 @@
+name: Date$(17/10/2022)
+
+trigger:
+
+pool: 
+
+stages:
+ - stage: stage1
+   displayName: stage1
+   jobs:
+   - job: job1
+     steps: 
+     - checkout: self
+     - script: ....
+ - stage: stage2
+   dependsOn: stage1
+   displayName: testStage
+   jobs:
+   - job: test
+     displayName: 
+     pool:
+     timeoutInMinutes:
+ - stage: stage3
+   displayName:
+   jobs:
+   - job: 
+      checkout: self
+      
