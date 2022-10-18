@@ -14,6 +14,9 @@ variables:
 stages:
  - stage: stage1
    displayName: stage1
+   variables: 
+    - name: variable
+      value: tuesday
    jobs:
    - job: job1
      steps: 
@@ -21,6 +24,7 @@ stages:
      - script: 'echo "Hello World!"'
        displayName: Hello World
      - script: 'echo "Variable: $(variable)"'
+       displayName: Variables
 
 
       
