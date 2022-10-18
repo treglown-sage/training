@@ -36,11 +36,14 @@ stages:
        displayName: Hello World
      - script: 'echo "stageVariable, $(stageVariable), jobVariable: $(jobVariable), taskVariable, $(day.taskOutput), Build_BuildId: $(Build.BuildId) Size: $(size) Extra: $(extra) oldWay: $(oldWay)"'
        displayName: Variables
-
-     - script: |
-        echo "Variable:"
-        echo $(ValidateVar.variable)
-       name: Print_Key_value
+   - job: job2
+     variables:
+      - variableFromJob1: $[ dependencies.job1.outputs['day.taskOutput']]
+     steps:
+      - checkout: none
+      - script: |
+          echo "stageVariable, $(stageVariable), jobVariable, $(jobVariable), stage1 Variable: $(varFromStage1) taskVariable: $(day.taskOutput)" 
+     
 
  - stage: stage2
    displayName: stage2
