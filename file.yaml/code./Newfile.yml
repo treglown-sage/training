@@ -26,9 +26,10 @@ stages:
      - checkout: self
      - script: | 
          echo "Hello World!"
-         echo "##vso[task.setvariable variable=variable;isOutput=false]thursday"
+         echo "##vso[task.setvariable variable=variable;isOutput=true]thursday"
+       name: day
        displayName: Hello World
-     - script: 'echo "Variable: $(variable)"'
+     - script: 'echo "Variable: $(day.variable)"'
        displayName: Variables
 
 
