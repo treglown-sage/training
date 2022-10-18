@@ -44,9 +44,9 @@ stages:
     - job: stage2_job_A
       condition: eq(stageDependencies.stage1.job1.outputs[ValidateVar.variable])
       variables:
-       - varFromStageA: echo "##vso[task.setvariable variable=variable;isOutput=true]thursday"
+       - varFromStage1: $[##vso[task.setvariable variable=variable;isOutput=true]]
       steps:
-      - checkout: self
+      - checkout: none
       - script: |
          - 'echo "Variable: $(day.variable)"'
        
