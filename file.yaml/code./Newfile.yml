@@ -10,6 +10,7 @@ pool:
 variables: 
   - name: variable
     value: monday
+  - group: Latte
 
 stages:
  - stage: stage1
@@ -24,6 +25,10 @@ stages:
          value: wednesday
      steps: 
      - checkout: none
+     - task: CmdLine@2
+       displayName: 'DEBUG: show environment variables'
+       inputs:
+        script: 'printenv'
      - script: | 
          echo "Hello World!"
          echo "##vso[task.setvariable variable=taskOutput;isOutput=true]thursday"
