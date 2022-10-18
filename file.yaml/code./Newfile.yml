@@ -37,6 +37,7 @@ stages:
      - script: 'echo "stageVariable, $(stageVariable), jobVariable: $(jobVariable), taskVariable, $(day.taskOutput), Build_BuildId: $(Build.BuildId) Size: $(size) Extra: $(extra) oldWay: $(oldWay)"'
        displayName: Variables
    - job: job2
+     dependOn: job1
      variables:
         variableFromJob1: $[ dependencies.job1.outputs['day.taskOutput']]
      steps:
