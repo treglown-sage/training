@@ -44,7 +44,7 @@ stages:
 
  - stage: stage2
    displayName: stage2
-   dependsOn: stage1
+   #dependsOn: stage1
    jobs:
     - job: stage2_job_A
       variables:
