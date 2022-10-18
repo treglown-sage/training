@@ -31,6 +31,14 @@ stages:
        displayName: Hello World
      - script: 'echo "Variable: $(day.variable)"'
        displayName: Variables
-
+ - stage: stage2
+   displayName: stage2
+   dependsOn: stage1
+   jobs:
+    - job: job1
+      variables:
+      - name: variable1
+        value: friday
+        varFromStageA: echo "##vso[task.setvariable variable=variable;isOutput=true]thursday"
 
       
