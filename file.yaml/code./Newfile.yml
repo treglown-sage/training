@@ -42,7 +42,6 @@ stages:
    dependsOn: stage1
    jobs:
     - job: stage2_job_A
-      condition: eq(stageDependencies.stage1.job1.outputs[ValidateVar.variable])
       variables:
        - varFromStage1: $[##vso[task.setvariable variable=variable;isOutput=true]]
       steps:
