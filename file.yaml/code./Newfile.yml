@@ -1,7 +1,7 @@
 
 name: BC-$(Date:yyyyMMdd)$(Rev:.rrr)
 
-trigger: none
+trigger: main
 
 pool: 
   vmImage: ubuntu-latest
@@ -13,18 +13,5 @@ stages:
    - job: job1
      steps: 
      - checkout: self
-     - script: ....
- - stage: stage2
-   dependsOn: stage1
-   displayName: testStage
-   jobs:
-   - job: test
-     displayName: 
-     pool:
-     timeoutInMinutes:
- - stage: stage3
-   displayName:
-   jobs:
-   - job: 
-      checkout: self
+     - script: 'echo "Hello World!"'
       
