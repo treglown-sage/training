@@ -15,4 +15,6 @@ stages:
      steps: 
      - checkout: self
      - script: 'echo "Hello World!"'
+       displayName: Hello World!
+
       
