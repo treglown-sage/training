@@ -19,6 +19,9 @@ stages:
       value: tuesday
    jobs:
    - job: job1
+     variables:
+       - name: variable
+         value: wednesday
      steps: 
      - checkout: self
      - script: 'echo "Hello World!"'
