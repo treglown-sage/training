@@ -32,12 +32,17 @@ stages:
      - script: 'echo "Variable: $(day.variable)"'
        displayName: Variables
 
+     - script: |
+        echo "Variable:"
+        echo $(ValidateVar.variable)
+       name: Print_Key_value
+
  - stage: stage2
    displayName: stage2
    dependsOn: stage1
    jobs:
     - job: stage2_job_A
-      condition: eq(stageDependencies.stage1.job1.outputs[ValidateVar.VarKey], TEST)
+      condition: eq(stageDependencies.stage1.job1.outputs[ValidateVar.variable])
       variables:
        - varFromStageA: echo "##vso[task.setvariable variable=variable;isOutput=true]thursday"
       steps:
