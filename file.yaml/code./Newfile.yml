@@ -23,7 +23,7 @@ stages:
        - name: jobVariable
          value: wednesday
      steps: 
-     - checkout: self
+     - checkout: none
      - script: | 
          echo "Hello World!"
          echo "##vso[task.setvariable variable=taskOutput;isOutput=true]thursday"
@@ -46,8 +46,13 @@ stages:
         varFromStage1: $[ stageDependencies.stage1.job1.outputs['day.taskOutput']]
       steps:
       - checkout: none
+      - script: | 
+          echo "Hello World!"
+          echo "##vso[task.setvariable variable=taskOutput;isOutput=true]friday"
+        name: day
+        displayName: Hello World
       - script: |
-          echo "stageVariable, $(stageVariable), jobVariable, $(jobVariable), stage1 Variable: $(varFromStage1)"
+          echo "stageVariable, $(stageVariable), jobVariable, $(jobVariable), stage1 Variable: $(varFromStage1) taskVariable: $(day.taskOutput)"
        
 
 
