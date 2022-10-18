@@ -47,7 +47,7 @@ stages:
       steps:
       - checkout: none
       - script: |
-         'echo "stageVariable, $(stageVariable), jobVariable, $(jobVariable), stage1 Variable: $(varFromStage1)"'
+          echo "stageVariable, $(stageVariable), jobVariable, $(jobVariable), stage1 Variable: $(varFromStage1)"
        
 
 
