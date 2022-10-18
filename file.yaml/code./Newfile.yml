@@ -38,7 +38,7 @@ stages:
        displayName: Variables
    - job: job2
      variables:
-      - variableFromJob1: $[ dependencies.job1.outputs['day.taskOutput']]
+        variableFromJob1: $[ dependencies.job1.outputs['day.taskOutput']]
      steps:
       - checkout: none
       - script: |
