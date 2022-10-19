@@ -14,7 +14,7 @@ parameters:
 
 variables:
  - name: testCondition
-   value: true
+   value: false
 
 stages:
   - stage: build
