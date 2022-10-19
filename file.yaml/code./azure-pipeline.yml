@@ -2,8 +2,9 @@ trigger: none
 
 parameters:
   - name: myStringName
+    displayName: I'm a String
     type: string
-    default: a string value
+    default: String Value
   - name: myNumber
     type: number
     default: 2
@@ -12,4 +13,4 @@ extends:
   template: /file.yaml/code./start.yml
   parameters:
     myStringName: $(myStringName)
-    
+    myNumber: $(myNumber)
