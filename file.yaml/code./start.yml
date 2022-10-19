@@ -15,4 +15,4 @@ parameters:
 steps: 
 - ${{ each parameter in parameters }}:
   - script: echo ${{ parameter.Value }}
-    displayName: Parameter Name ${{ parameter.Key }}
+    displayName: Parameter Name ${{ parameter.Value }}
