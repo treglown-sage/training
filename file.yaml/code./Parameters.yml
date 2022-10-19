@@ -18,3 +18,7 @@ jobs:
   - job: arm
     steps:
     - script: echo Building arm...
+- ${{ if notin(parameters.configs, 'x86', 'x64', 'arm') }}:
+  - job: test
+    step:
+    - script: echo test failed...
