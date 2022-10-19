@@ -40,9 +40,10 @@ stages:
             - script: echo running test
   - stage: notification
     displayName: Notification
-    ${{ if eq(parameters.myBoolean, true) }}:
-      dependsOn: test
-   
+    #${{ if eq(parameters.myBoolean, true) }}:
+    dependsOn: test
+    #${{ if ne(parameters.myBoolean, true) }}:
+     # dependsOn: deploy
     jobs:
       - job: notify
         steps: 
