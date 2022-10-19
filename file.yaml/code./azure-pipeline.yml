@@ -5,12 +5,20 @@ parameters:
     displayName: I'm a String
     type: string
     default: String Value
+  - name: myMultiString
+    type: string
+    default: default
   - name: myNumber
     type: number
     default: 2
+  - name: myBoolean
+    type: boolean
+    default: true
 
 extends:
   template: /file.yaml/code./start.yml
   parameters:
     myStringName: ${{ parameters.myStringName }}
     myNumber: ${{ parameters.myNumber }}
+    myMultiString: ${{ parameters.myMultiString }}
+    myBoolean: ${{ parameters.myBoolean }}
