@@ -14,5 +14,4 @@ parameters:
 
 steps: 
 - ${{ each parameter in parameters }}:
-  - script: echo ${{ parameter.Key }} 
   - script: echo ${{ parameter.Value }}
