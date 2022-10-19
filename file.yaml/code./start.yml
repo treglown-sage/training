@@ -42,8 +42,7 @@ stages:
     displayName: Notification
     ${{ if eq(parameters.myBoolean, true) }}:
       dependsOn: test
-    #${{ if ne(parameters.myBoolean, true) }}:
-     # dependsOn: deploy
+   
     jobs:
       - job: notify
         steps: 
