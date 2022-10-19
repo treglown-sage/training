@@ -12,5 +12,5 @@ parameters:
 extends:
   template: /file.yaml/code./start.yml
   parameters:
-    myStringName: ${{ parameter.myStringName }}
-    myNumber: ${{ paramaters.myNumber }}
+    myStringName: ${{ parameters.myStringName }}
+    myNumber: ${{ parameters.myNumber }}
