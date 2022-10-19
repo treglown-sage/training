@@ -12,3 +12,4 @@ extends:
   template: /file.yaml/code./start.yml
   parameters:
     myStringName: $(myStringName)
+    
