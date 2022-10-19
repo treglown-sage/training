@@ -12,6 +12,10 @@ parameters:
   type: boolean
   default: true
 
+variables:
+ - name: testCondition
+   value: true
+
 stages:
   - stage: build
     displayName: Build
@@ -30,7 +34,8 @@ stages:
      - job: deploy
        steps:
         - script: echo running deploy 
-  - ${{ if eq(parameters.myBoolean, true) }}:
+  #- ${{ if eq(parameters.myBoolean, true) }}:
+  - ${{ if eq(variables['testCondition'], 'true') }}:  
     - stage: test
       displayName: Test
       dependsOn: deploy
@@ -40,10 +45,10 @@ stages:
             - script: echo running test
   - stage: notification
     displayName: Notification
-    #${{ if eq(parameters.myBoolean, true) }}:
-    dependsOn: test
-    #${{ if ne(parameters.myBoolean, true) }}:
-     # dependsOn: deploy
+    ${{ if eq(parameters.myBoolean, true) }}:
+      dependsOn: test
+    ${{ if ne(parameters.myBoolean, true) }}:
+      dependsOn: deploy
     jobs:
       - job: notify
         steps: 
