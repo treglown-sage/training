@@ -12,7 +12,41 @@ parameters:
   type: boolean
   default: true
 
-steps: 
-- ${{ each parameter in parameters }}:
-  - script: echo ${{ parameter.Value }}
-    displayName: Parameter Name ${{ parameter.Key }}
+stages:
+  - stage: build
+    displayName: Build
+    jobs:
+      - job: build
+        steps:
+          - script: echo runnning build
+      - job: unitTest
+        dependsOn: build
+        steps:
+          - script: echo running test
+  - stage: deploy
+    displayName: Deploy
+    dependsOn: build
+    jobs:
+     - job: deploy
+       steps:
+        - script: echo running deploy 
+  - ${{ if eq(parameters.myBoolean, true) }}:
+    - stage: test
+      displayName: Test
+      dependsOn: deploy
+      jobs:
+        - job: test
+          steps:
+            - script: echo running test
+  - stage: notification
+    displayName: Notification
+    ${{ if eq(parameters.myBoolean, true) }}:
+      dependsOn: test
+    ${{ if ne(parameters.myBoolean, true) }}:
+      dependsOn: deploy
+    jobs:
+      - job: notify
+        steps: 
+        - ${{ each parameter in parameters }}:
+          - script: echo ${{ parameter.Value }}
+            displayName: Parameter Name ${{ parameter.Key }}
