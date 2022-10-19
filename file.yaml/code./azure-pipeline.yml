@@ -1,4 +1,4 @@
 trigger: none
 
 extends:
-  template: start.yaml
+  template: /file.yaml/code./start.yml
