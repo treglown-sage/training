@@ -34,8 +34,7 @@ stages:
      - job: deploy
        steps:
         - script: echo running deploy 
-  #- ${{ if eq(parameters.myBoolean, true) }}:
-  - ${{ if eq(variables['testCondition'], 'true') }}:  
+  - ${{ if eq(parameters.myBoolean, true) }}: 
     - stage: test
       displayName: Test
       dependsOn: deploy

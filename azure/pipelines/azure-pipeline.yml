@@ -25,7 +25,8 @@ parameters:
     default: true
 
 extends:
-  template: /file.yaml/code./start.yml
+  template: /azure/templates/start.yml
+
   parameters:
     myStringName: ${{ parameters.myStringName }}
     myNumber: ${{ parameters.myNumber }}
