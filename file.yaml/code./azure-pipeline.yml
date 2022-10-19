@@ -1,4 +1,15 @@
 trigger: none
 
+parameters:
+  - name: myStringName
+    type: string
+    default: a string value
+  - name: myNumber
+    type: number
+    default: 2
+
 extends:
   template: /file.yaml/code./start.yml
+  parameters:
+    myStringName: $(myStringName)
+    myNumber: $(myNumber)
