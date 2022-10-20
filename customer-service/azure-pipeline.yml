@@ -4,9 +4,11 @@ parameters:
   - name: serviceName
     displayName: Service Name
     type: string
+    default: customer service 
   - name: managerName
     displayName: Manager Name
     type: string
+    default: darren
     values: 
     - carl
     - darren
