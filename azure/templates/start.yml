@@ -13,6 +13,7 @@ parameters:
   default: true
 - name: creditRating
   type: string
+  default: ok
 
 variables:
  - name: testCondition
