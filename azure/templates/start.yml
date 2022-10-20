@@ -19,6 +19,14 @@ variables:
  - name: testCondition
    value: false
 
+resources:
+  repositories:
+  - repository: lsm-servicefabric
+    type: github
+    endpoint: 'github.com_sfab-bankingcloud'
+    name: Sage/lsm-servicefabric
+    ref: refs/heads/production
+
 stages:
   - stage: build
     displayName: Build
