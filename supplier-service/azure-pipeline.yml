@@ -4,9 +4,11 @@ parameters:
   - name: serviceName
     displayName: Service Name
     type: string
+    default: service supplier
   - name: managerName
     displayName: Manager Name
     type: string
+    default: carl
     values: 
     - carl
     - darren
@@ -24,6 +26,15 @@ parameters:
     displayName: Run Tests
     type: boolean
     default: true
+  - name: creditRating
+    displayName: Credit Rating
+    type: string
+    default: poor
+    values:
+      - poor
+      - ok
+      - good
+      - great
 
 extends:
   template: /azure/templates/start.yml
@@ -33,3 +44,4 @@ extends:
     myNumber: ${{ parameters.numberOfInstances }}
     myMultiString: ${{ parameters.managerName }}
     myBoolean: ${{ parameters.runTests }}
+    creditRating: ${{ parameters.creditRating }}
