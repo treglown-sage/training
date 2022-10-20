@@ -11,6 +11,8 @@ parameters:
 - name: myBoolean
   type: boolean
   default: true
+- name: creditRating
+  type: string
 
 variables:
  - name: testCondition
