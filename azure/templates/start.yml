@@ -45,6 +45,34 @@ stages:
         - job: test
           steps:
             - script: echo running test
+        ###############################################
+        # Security Testing
+        ###############################################
+        - job: securityTests
+          timeoutInMinutes: 90
+          continueOnError: true
+          displayName: 'Security Testing'
+          dependsOn:
+          - test
+          pool:
+            vmImage: 'ubuntu-20.04'
+          container:
+            image: sagelsmdevops.azurecr.io/sage/lsm/fortify:latest
+            endpoint: 'LSMDocker'  
+          steps:
+          - checkout: self
+          - checkout: lsm-servicefabric
+          - template: security/securitytests.yaml@lsm-servicefabric
+            parameters:
+              ThreadfixAppId: '1'
+              ThreadfixUri: https://www.google.co.uk
+              ThreadfixAppKey: secret
+              JSCode: false
+              ExcludeFolders: '**/*.tests/**/*,**/*.Tests/**,**/*Test*/**,**/test/**,**/*absa/**,**/*narrativedictionary/**'
+              DependencyScanFolder: $(Build.SourcesDirectory)
+              DependencySuppressionFile: $(Build.SourcesDirectory)
+              FortifyScanFolder: $(Build.SourcesDirectory)
+              CheckoutPath: '/lsm-servicefabric'
   - stage: notification
     displayName: Notification
     ${{ if eq(parameters.myBoolean, true) }}:
@@ -57,3 +85,4 @@ stages:
         - ${{ each parameter in parameters }}:
           - script: echo ${{ parameter.Value }}
             displayName: Parameter Name ${{ parameter.Key }}
+    
